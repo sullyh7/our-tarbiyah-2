@@ -1,8 +1,11 @@
+import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import Footer from '@/components/Footer'
+import Navbar from '@/components/navbar/Navbar'
+import LoginModal from '@/components/modal/LoginModal'
+import SignupStudentModal from '@/components/modal/SignupModal'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +19,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={"bg_gradient"}>
+        <Navbar/>
+        <LoginModal/>
+        <SignupStudentModal/>
+        <Toaster/>
+        <div 
+        className='mt-[6rem]
+        container items-center justify-center
+         mx-auto my-auto h-full w-full max-w-[90rem]
+         flex flex-col gap-y-[10rem] sm:gap-y-[20rem] overflow-hidden'>
+          {children}
+        </div>
+        <Footer/>
+      </body>
     </html>
   )
 }
