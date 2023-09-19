@@ -1,11 +1,20 @@
 import React from 'react'
 
 import PriceCard from '@/components/payments/PriceCard'
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import Information from '@/components/Information'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
+import { BOOK_A_LESSON_NOW } from '@/constants/nav'
+import Link from 'next/link'
+import { cn } from '@/lib/utils'
 
 
-const Payments = () => {
+const Payments = async () => {
+  const supabase = createServerComponentClient({ cookies })
+  const {data: user}= await supabase.auth.getUser()
+  
+
   return (
     <>
         <div className='flex flex-col relative justify-center items-center gap-y-10 sm:gap-y-15'>
@@ -16,9 +25,9 @@ const Payments = () => {
             <PriceCard>GCSEs from £25</PriceCard>
             <PriceCard>A-Levels from £25</PriceCard>
         </div>
-        <Button className='book_button text-xl p-[2rem]'>
+        <Link href={BOOK_A_LESSON_NOW} className={cn(buttonVariants({variant: "default"}), 'book_button text-xl p-[5rem])')}>
             Book yourself a lesson now (or your child)
-        </Button>
+        </Link>
         <h1 className="font-thin italic">We take a small service fee for accomodating :P</h1>
       </div>
 

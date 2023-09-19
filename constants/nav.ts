@@ -8,8 +8,9 @@ export const SIGN_IN = "/sign-in";
 export const SIGN_UP = "/sign-up";
 export const SIGN_UP_TUTOR = `${SIGN_UP}/tutor`;
 export const SIGN_UP_STUDENT = `${SIGN_UP}/student`
-export const STUDENT_DASHBOARD = "/student/dashboard"
-export const TUTOR_DASHBOARD = "/tutor/dashboard"
+export const STUDENT_DASHBOARD = "/dashboard/student"
+export const TUTOR_DASHBOARD = "/dashboard/tutor"
+export const DASHBOARD = "/dashboard"
 export const NEWSLETTER = "/community"
 export const PROFILE = "/profile"
 

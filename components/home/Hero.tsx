@@ -5,8 +5,14 @@ import AnimatedDiv from '../AnimatedDiv'
 import { Button } from '../ui/button'
 import Image from 'next/image'
 import { useDialogStore } from '@/store/LoginModalStore';
+import { useUser } from '@supabase/auth-helpers-react';
+import { useRouter } from 'next/navigation';
+import { STUDENT_DASHBOARD } from '@/constants/nav';
 
 const Hero = () => {
+
+    const user = useUser()
+    const router = useRouter();
 
 const openLoginDialog = useDialogStore(state => state.openLoginDialog)
   return (
@@ -20,7 +26,7 @@ const openLoginDialog = useDialogStore(state => state.openLoginDialog)
                 <h1 className='mt-[2rem] font-normal subheader'>We are an exclusive online tuition hub, thriving with its promotion of Islamic community.</h1>
             </div>
         
-            <Button className='sm:w-[35%] my-10 text-xl p-8' onClick={openLoginDialog}>Book A Lesson Now</Button>
+            <Button className='sm:w-[35%] my-10 text-xl p-8' onClick={user ? ()=> {router.push(STUDENT_DASHBOARD)} : openLoginDialog}>Book A Lesson Now</Button>
         </AnimatedDiv>
 
         <AnimatedDiv className='flex-2 ' direction='left'>

@@ -9,8 +9,14 @@ import { DialogHeader, DialogFooter, DialogContent, Dialog, DialogTitle, DialogD
 import { Form, FormControl, FormField, FormItem, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useToast } from "../ui/use-toast";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useRouter } from "next/navigation";
 
 const LoginModal = () => {
+    const { toast } = useToast();
+    const router = useRouter();
+    const supabase = useSupabaseClient();
     const isOpen = useDialogStore(state => state.isLoginDialogOpen); 
     const closeDialog = useDialogStore(state => state.closeLoginDialog); 
     const openSignUpDialog = useDialogStore(state => state.openSignUpDialog)
@@ -24,9 +30,20 @@ const LoginModal = () => {
     },
   })
 
-  function onSubmit(values: z.infer<typeof loginFormSchema>) {
+  async function onSubmit(values: z.infer<typeof loginFormSchema>) {
     // login...
+    const {data, error} = await supabase.auth.signInWithPassword({
+      email: values.email,
+      password: values.password,
+    })
+    if (error) {
+      toast({
+        title: "Error signing in"
+      })
+    }
     closeDialog();
+    router.refresh();
+    
     console.log(values)
   }
 

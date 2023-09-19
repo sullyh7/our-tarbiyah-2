@@ -16,8 +16,7 @@ export const signUpFormSchema = z.object({
       message: 'You must be at least 8 to join us.',
     }),
     phone: z
-      .string()
-      .regex(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/),
+      .string(), // TODO add phone verification
     email: z.string().email(),
     gender: z.enum(["male", "female"], {required_error: "Gender is required"}),
     password: z.string().min(8, {
@@ -25,21 +24,11 @@ export const signUpFormSchema = z.object({
     }),
   });
 
-export const tutorSignupFormSchema = z.object({
-    firstname: z.string().nonempty({message: "First name cannot be empty"}),
-    lastname: z.string().nonempty({message: "Last name cannot be empty."}),
-    dateOfBirth: z.date().max(new Date("2005-01-01"), {message: "You must be 18 or older"}),
-  
-    gender: z.enum(["male", "female"]),
-    email: z.string().email(),
-    phone: z.string(), // TODO add phone validation
-    password: z.string(),
-    
-    dbs: z.string().nonempty({message: "DBS is required."}),
-    cv: z.string().nonempty({message: "CV is required."}),
-  
-    qualifications: z.array(z.string()).nonempty({message: "You need at least one qualification."})
-    
-  
-  });
+export const onboardTutorFormSchema = z.object({
+    qualifications: z
+      .array(z.object({qualification: z.string().min(10, {message: "Add some more details about your qualifications (10 characters minimum)"})})),
+      dbs: z.instanceof(File).optional(),
+      cv: z.instanceof(File, {message: "Please upload your cv here"}),
+    });
+
   

@@ -17,7 +17,7 @@ const AnimatedDiv = ({ direction, children, className}: AnimatedDivProps) => {
       initial="hidden"
       whileInView="visible"
       exit="exit"
-      viewport={{once: true}}
+      // viewport={{once: true}}
       >
 
         {children}
