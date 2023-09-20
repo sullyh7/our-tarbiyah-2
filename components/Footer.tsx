@@ -5,7 +5,7 @@ import { SiFacebook, SiInstagram, SiTiktok, SiTwitter } from "react-icons/si";
 
 const Footer = () => {
     return (
-      <div className='flex sm:flex-row flex-col items-center gap-y-5 justify-between w-full p-10 bg-zinc-50'>
+      <div className='flex sm:flex-row bottom-0 flex-col items-center gap-y-5 justify-between w-full p-10 bg-zinc-50'>
           <Image src={"/images/logo-nobg.png"} className='object-contain' width={140} height={10} alt='Our Tarbiyah' />
           <div className='flex flex-col gap-y-10'>
               <div className='flex gap-x-10 justify-between'>

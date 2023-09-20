@@ -12,42 +12,42 @@ export interface Database {
       profiles: {
         Row: {
           date_of_birth: string | null
-          email: string | null
-          firstname: string | null
+          email: string
+          firstname: string
           id: string
-          lastname: string | null
+          lastname: string
           onboarded_student: boolean | null
           onboarded_tutor: boolean | null
-          phone: string | null
+          phone: string
           stripe_account_id: string | null
           updated_at: string | null
-          user_gender: Database["public"]["Enums"]["gender"] | null
+          user_gender: Database["public"]["Enums"]["gender"]
         }
         Insert: {
           date_of_birth?: string | null
-          email?: string | null
-          firstname?: string | null
+          email: string
+          firstname: string
           id: string
-          lastname?: string | null
+          lastname: string
           onboarded_student?: boolean | null
           onboarded_tutor?: boolean | null
-          phone?: string | null
+          phone: string
           stripe_account_id?: string | null
           updated_at?: string | null
-          user_gender?: Database["public"]["Enums"]["gender"] | null
+          user_gender: Database["public"]["Enums"]["gender"]
         }
         Update: {
           date_of_birth?: string | null
-          email?: string | null
-          firstname?: string | null
+          email?: string
+          firstname?: string
           id?: string
-          lastname?: string | null
+          lastname?: string
           onboarded_student?: boolean | null
           onboarded_tutor?: boolean | null
-          phone?: string | null
+          phone?: string
           stripe_account_id?: string | null
           updated_at?: string | null
-          user_gender?: Database["public"]["Enums"]["gender"] | null
+          user_gender?: Database["public"]["Enums"]["gender"]
         }
         Relationships: [
           {
@@ -61,27 +61,27 @@ export interface Database {
       tutor_profile: {
         Row: {
           created_at: string
-          cv_url: string | null
-          dbs_url: string | null
+          cv_url: string
+          dbs_url: string
           id: string
-          qualifications: string[] | null
-          status: Database["public"]["Enums"]["tutor_status"] | null
+          qualifications: string[]
+          status: Database["public"]["Enums"]["tutor_status"]
         }
         Insert: {
           created_at?: string
-          cv_url?: string | null
-          dbs_url?: string | null
+          cv_url: string
+          dbs_url: string
           id: string
-          qualifications?: string[] | null
-          status?: Database["public"]["Enums"]["tutor_status"] | null
+          qualifications: string[]
+          status?: Database["public"]["Enums"]["tutor_status"]
         }
         Update: {
           created_at?: string
-          cv_url?: string | null
-          dbs_url?: string | null
+          cv_url?: string
+          dbs_url?: string
           id?: string
-          qualifications?: string[] | null
-          status?: Database["public"]["Enums"]["tutor_status"] | null
+          qualifications?: string[]
+          status?: Database["public"]["Enums"]["tutor_status"]
         }
         Relationships: [
           {

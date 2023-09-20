@@ -13,11 +13,8 @@ import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
 import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react';
 
-interface OnboardTutorProps {
-    userId: string,
-}
 
-const OnboardTutor = ({ userId }: OnboardTutorProps) => {
+const OnboardTutor = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const supabase = useSupabaseClient<Database>();
     const user = useUser();
@@ -105,8 +102,8 @@ const OnboardTutor = ({ userId }: OnboardTutorProps) => {
         
     }
 
-  return <>
-  <h1 className='page_header'>Complete your tutor application.</h1>
+  return <><div>
+  <h1 className='page_header mb-10'>Complete your tutor application.</h1>
     <div className='flex w-full items-center justify-center'>
         <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col">
@@ -180,7 +177,7 @@ const OnboardTutor = ({ userId }: OnboardTutorProps) => {
       </form>
       </Form>
     </div>
-  </>
+  </div><div/></>
     
     
     
