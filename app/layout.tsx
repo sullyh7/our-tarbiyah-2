@@ -27,7 +27,7 @@ export default function RootLayout({
         <SignupStudentModal/>
         <Toaster/>
         <div 
-        className='mt-[6rem]
+        className='mt-[3rem]
         container items-center justify-center
          mx-auto my-auto h-full w-full max-w-[90rem]
          flex flex-col gap-y-[10rem] sm:gap-y-[20rem] overflow-hidden'>
